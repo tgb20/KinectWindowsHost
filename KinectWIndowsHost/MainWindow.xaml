@@ -1,0 +1,25 @@
+﻿<Window x:Class="KinectWIndowsHost.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KinectWIndowsHost"
+        xmlns:k="http://schemas.microsoft.com/kinect/2013"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <k:KinectSensorChooserUI HorizontalAlignment="Center" VerticalAlignment="Top" Name="kinectChooser"></k:KinectSensorChooserUI>
+        <Label x:Name="KinectStatus" Content="Current Kinect Status" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"></Label>
+        <TextBlock x:Name="LeftWrist" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Left Wrist" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="XValueLeft" HorizontalAlignment="Left" Margin="25,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="XLeft" HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" Text="X:" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="YValueLeft" HorizontalAlignment="Left" Margin="25,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="YLeft" HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="Y:" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="ZValueLeft" HorizontalAlignment="Left" Margin="25,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="ZLeft" HorizontalAlignment="Left" Margin="10,70,0,0" TextWrapping="Wrap" Text="Z:" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="TPose" HorizontalAlignment="Left" Margin="10,91,0,0" TextWrapping="Wrap" Text="T-Pose" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="InTPos" HorizontalAlignment="Left" Margin="10,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="TableValue" HorizontalAlignment="Left" Margin="10,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top"></TextBlock>
+        <TextBlock x:Name="TableLabel" HorizontalAlignment="Left" Margin="10,133,0,0" Text="NetworkTable:" TextWrapping="Wrap" VerticalAlignment="Top"></TextBlock>
+    </Grid>
+</Window>
