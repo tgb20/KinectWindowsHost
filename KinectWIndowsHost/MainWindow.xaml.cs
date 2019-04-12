@@ -17,6 +17,8 @@ namespace KinectWIndowsHost
 
 
         private KinectSensor sensor;
+        private ISerialConnection connection;
+        private ArduinoSession session;
 
         public MainWindow()
         {
@@ -31,11 +33,12 @@ namespace KinectWIndowsHost
             kinectChooser.KinectSensorChooser = sensorStatus;
             sensorStatus.Start();
 
-            ISerialConnection connection = GetConnection();
+            connection = GetConnection();
 
             if (connection != null)
-                using (var session = new ArduinoSession(connection))
-                    PerformBasicTest(session);
+            {
+                session = new ArduinoSession(connection);
+            }
         }
 
         private static ISerialConnection GetConnection()
@@ -49,17 +52,6 @@ namespace KinectWIndowsHost
                 Console.WriteLine($"Connected to port {connection.PortName} at {connection.BaudRate} baud.");
 
             return connection;
-        }
-
-        private static void PerformBasicTest(IFirmataProtocol session)
-        {
-            var firmware = session.GetFirmware();
-            Console.WriteLine($"Firmware: {firmware.Name} version {firmware.MajorVersion}.{firmware.MinorVersion}");
-            var protocolVersion = session.GetProtocolVersion();
-            Console.WriteLine($"Firmata protocol version {protocolVersion.Major}.{protocolVersion.Minor}");
-
-            session.SendStringData("Hello");
-
         }
 
         private void KinectSensorChooserKinectChanged(object sender, KinectChangedEventArgs e)
@@ -118,10 +110,15 @@ namespace KinectWIndowsHost
             if(leftHand.Position.Y >= shoulder.Position.Y - 0.15 && rightHand.Position.Y >= shoulder.Position.Y - 0.15)
             {
                 InTPos.Text = "Yes";
+                if(session != null)
+                {
+                    session.WriteLine("yes");
+                }
             }
             else
             {
                 InTPos.Text = "No";
+                session.WriteLine("no");
             } 
         }
     }
